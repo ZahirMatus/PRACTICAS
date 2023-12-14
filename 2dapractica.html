@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Potencias fraccionales de dos en forma decimal</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin: 20px auto;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function generarPotencias() {
+      var cantidadPotencias = parseInt(document.getElementById('cantidadPotencias').value);
+      var tabla = document.getElementById('tabla');
+      tabla.innerHTML = ''; // Limpiar contenido anterior
+
+      var potencia = 1.0;
+      var fraccion = 1;
+      var suma = 0;
+      
+      for (var i = 0; i < cantidadPotencias; i++) {
+        potencia /= 2;
+        fraccion = '1/' + Math.pow(2, i + 1);
+        suma += potencia;
+        
+        var fila = tabla.insertRow();
+        var celdaPotencia = fila.insertCell(0);
+        var celdaFraccion = fila.insertCell(1);
+        var celdaSuma = fila.insertCell(2);
+
+        celdaPotencia.innerHTML = potencia;
+        celdaFraccion.innerHTML = fraccion;
+        celdaSuma.innerHTML = suma.toFixed(10); // Ajusta la cantidad de decimales mostrados
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Potencias fraccionales de dos en forma decimal</h1>
+  <label for="cantidadPotencias">Cantidad de potencias:</label>
+  <input type="number" id="cantidadPotencias" value="10">
+  <button onclick="generarPotencias()">Generar</button>
+  <br><br>
+  <table id="tabla">
+    <tr>
+      <th>Potencia</th>
+      <th>Fracción</th>
+      <th>Suma</th>
+    </tr>
+  </table>
+</body>
+</html>
