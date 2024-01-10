@@ -1,0 +1,58 @@
+function productoInterno(a, b) {
+    if (a.length !== b.length) {
+        return null;
+    }
+
+    let resultado = 0;
+    for (let i = 0; i < a.length; i++) {
+        resultado += a[i] * b[i];
+    }
+    return resultado;
+}
+
+function sonOrtogonales(a, b) {
+    const resultado = productoInterno(a, b);
+
+    if (resultado === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Función principal
+function main() {
+    const readline = require('readline');
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    let a = [];
+    let b = [];
+
+    rl.question('Ingrese el vector a:\n', (answer) => {
+        a = answer.split(' ').map(Number);
+        console.log('a:', a);
+
+        rl.question('Ingrese el vector b:\n', (answer) => {
+            b = answer.split(' ').map(Number);
+            console.log('b:', b);
+
+            const resultadoProductoInterno = productoInterno(a, b);
+            console.log('Producto interno entre a y b:');
+            console.log(resultadoProductoInterno);
+
+            if (sonOrtogonales(a, b)) {
+                console.log('a y b son ortogonales');
+            } else {
+                console.log('a y b no son ortogonales');
+            }
+
+            rl.close();
+        });
+    });
+}
+
+// Llamada a la función principal
+main();
