@@ -1,0 +1,21 @@
+let ar = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+// Obtener un arreglo con los elementos de la primera fila
+let primeraFila = ar[0];
+console.log("Primera fila:", primeraFila);
+
+// Obtener un arreglo con los elementos de la primera columna
+let primeraColumna = ar.map(fila => fila[0]);
+console.log("Primera columna:", primeraColumna);
+
+// Obtener un arreglo con la diagonal principal
+let diagonalPrincipal = ar.map((fila, index) => fila[index]);
+console.log("Diagonal principal:", diagonalPrincipal);
+
+// Obtener un arreglo con todos los elementos en una sola dimensión
+let arregloUnidimensional = ar.flat();
+console.log("Arreglo unidimensional:", arregloUnidimensional);
