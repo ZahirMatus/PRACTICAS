@@ -1,0 +1,83 @@
+function esConsecutivo(arr) {
+    let n = arr.length;
+    let flatten = arr.reduce((acc, curr) => acc.concat(curr), []);
+    flatten.sort((a, b) => a - b);
+
+    for (let i = 0; i < flatten.length; i++) {
+        if (flatten[i] !== i + 1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function esCuadradoMagico(arr) {
+    let n = arr.length;
+    let sum = 0;
+
+    // Suma de la primera fila para comparar con otras filas y columnas
+    for (let j = 0; j < n; j++) {
+        sum += arr[0][j];
+    }
+
+    // Verificar filas y columnas
+    for (let i = 1; i < n; i++) {
+        let rowSum = 0;
+        let colSum = 0;
+        for (let j = 0; j < n; j++) {
+            rowSum += arr[i][j];
+            colSum += arr[j][i];
+        }
+        if (rowSum !== sum || colSum !== sum) {
+            return false;
+        }
+    }
+
+    // Verificar diagonales
+    let diagSum1 = 0;
+    let diagSum2 = 0;
+    for (let i = 0; i < n; i++) {
+        diagSum1 += arr[i][i];
+        diagSum2 += arr[i][n - i - 1];
+    }
+    if (diagSum1 !== sum || diagSum2 !== sum) {
+        return false;
+    }
+
+    return true;
+}
+
+function main() {
+    const readline = require('readline').createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    readline.question('Inserta el tamaño n: ', (size) => {
+        let n = parseInt(size);
+        let matriz = [];
+        console.log('Ingrese la matriz cuadrada de tamaño n x n separada por comas:');
+        for (let i = 0; i < n; i++) {
+            readline.question(`Fila ${i + 1}: `, (row) => {
+                matriz.push(row.split(',').map(Number));
+                if (matriz.length === n) {
+                    if (esConsecutivo(matriz)) {
+                        console.log('El arreglo sí contiene números consecutivos.');
+                    } else {
+                        console.log('El arreglo no contiene números consecutivos.');
+                    }
+
+                    if (esCuadradoMagico(matriz)) {
+                        console.log('El arreglo es un cuadrado mágico.');
+                    } else {
+                        console.log('El arreglo no es un cuadrado mágico.');
+                    }
+
+                    readline.close();
+                }
+            });
+        }
+    });
+}
+
+main();
