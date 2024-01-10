@@ -1,0 +1,21 @@
+// Función para obtener la suma de los elementos en un array
+function sumArray(arr) {
+  return arr.reduce((acc, curr) => acc + curr, 0);
+}
+
+// Función para obtener la cantidad de datos mayores que el promedio
+function datosMayoresAlPromedio(datos) {
+  const suma = sumArray(datos);
+  const promedio = suma / datos.length;
+  const mayoresAlPromedio = datos.filter((dato) => dato > promedio);
+  return mayoresAlPromedio.length;
+}
+
+// Solicitar al usuario la cantidad de datos a ingresar
+const numDatos = parseInt(prompt("¿Cuántos datos ingresará?"));
+
+// Array para almacenar los datos ingresados
+const datosIngresados = [];
+
+// Pedir al usuario que ingrese cada dato y almacenarlo en el array
+for (let i = 0
