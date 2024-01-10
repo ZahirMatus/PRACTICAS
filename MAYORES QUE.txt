@@ -1,0 +1,23 @@
+def contar_mayores_que_x(lista, x):
+    conteo = 0
+    for num in lista:
+        if num > x:
+            conteo += 1
+    return conteo
+
+# Solicitar al usuario la cantidad de números
+n = int(input("Ingresa cuántos números quieres leer: "))
+
+# Leer los números
+numeros = []
+print("Ingresa los números:")
+for i in range(n):
+    numero = float(input())
+    numeros.append(numero)
+
+# Obtener el valor x con el que comparar
+x = float(input("Ingresa el valor x con el cual comparar: "))
+
+# Contar números mayores que x
+cantidad_mayores = contar_mayores_que_x(numeros, x)
+print(f"De tu lista, {cantidad_mayores} valores son mayores a {x}")
