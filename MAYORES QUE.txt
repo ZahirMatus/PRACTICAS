@@ -1,23 +1,28 @@
-def contar_mayores_que_x(lista, x):
-    conteo = 0
-    for num in lista:
-        if num > x:
-            conteo += 1
-    return conteo
+// Función para contar cuántos números son mayores que x en la lista
+function contarMayoresQueX(lista, x) {
+    let conteo = 0;
+    for (let i = 0; i < lista.length; i++) {
+        if (lista[i] > x) {
+            conteo++;
+        }
+    }
+    return conteo;
+}
 
-# Solicitar al usuario la cantidad de números
-n = int(input("Ingresa cuántos números quieres leer: "))
+// Obtener la cantidad de números
+const n = parseInt(prompt("Ingresa cuántos números quieres leer: "));
 
-# Leer los números
-numeros = []
-print("Ingresa los números:")
-for i in range(n):
-    numero = float(input())
-    numeros.append(numero)
+// Leer los números
+const numeros = [];
+console.log("Ingresa los números:");
+for (let i = 0; i < n; i++) {
+    const numero = parseFloat(prompt());
+    numeros.push(numero);
+}
 
-# Obtener el valor x con el que comparar
-x = float(input("Ingresa el valor x con el cual comparar: "))
+// Obtener el valor x con el que comparar
+const x = parseFloat(prompt("Ingresa el valor x con el cual comparar: "));
 
-# Contar números mayores que x
-cantidad_mayores = contar_mayores_que_x(numeros, x)
-print(f"De tu lista, {cantidad_mayores} valores son mayores a {x}")
+// Contar números mayores que x
+const cantidadMayores = contarMayoresQueX(numeros, x);
+console.log(`De tu lista, ${cantidadMayores} valores son mayores a ${x}`);
