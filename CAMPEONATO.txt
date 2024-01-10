@@ -1,0 +1,47 @@
+// Función para obtener el nombre del equipo
+function obtenerNombreEquipo(numeroEquipo) {
+    let nombre = prompt(`Equipo${numeroEquipo}:`);
+    return nombre.trim();
+}
+
+// Función para simular los enfrentamientos
+function simularCampeonato() {
+    let equipos = [];
+    let resultados = [];
+    
+    // Obtener nombres de los 8 equipos
+    for (let i = 1; i <= 8; i++) {
+        let nombreEquipo = obtenerNombreEquipo(i);
+        equipos.push(nombreEquipo);
+    }
+    
+    // Etapas del campeonato
+    const etapas = ["Cuartos", "Semifinales", "Finales"];
+    
+    // Simulación de cada etapa
+    for (let etapa of etapas) {
+        console.log(`${etapa}:`);
+        let equiposEtapaSiguiente = [];
+        for (let i = 0; i < equipos.length; i += 2) {
+            let equipoA = equipos[i];
+            let equipoB = equipos[i + 1];
+            let resultado = prompt(`a. ${equipoA} - b. ${equipoB}:`).toLowerCase();
+            while (resultado !== 'a' && resultado !== 'b') {
+                resultado = prompt(`Por favor ingrese 'a' o 'b' para indicar el ganador entre ${equipoA} y ${equipoB}:`).toLowerCase();
+            }
+            if (resultado === 'a') {
+                equiposEtapaSiguiente.push(equipoA);
+            } else {
+                equiposEtapaSiguiente.push(equipoB);
+            }
+            resultados.push(resultado);
+        }
+        equipos = equiposEtapaSiguiente;
+    }
+    
+    // Mostrar el campeón
+    console.log(`El campeón es: ${equipos[0]}`);
+}
+
+// Ejecutar la simulación del campeonato
+simularCampeonato();
